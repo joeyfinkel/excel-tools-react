@@ -1,0 +1,22 @@
+@import url(../Variables.css);
+
+.sheet-display {
+  width: var(--container-width);
+  height: calc(var(--container-height) * 2.8);
+  background-color: var(--bg-color-secondary);
+  border-radius: var(--container-radius);
+}
+
+.underline {
+  border-bottom: 0.2px solid;
+}
+
+.text {
+  color: var(--text-color-primary) !important;
+}
+
+.headers-section {
+  height: 25vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

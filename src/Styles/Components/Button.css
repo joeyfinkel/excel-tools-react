@@ -1,0 +1,15 @@
+@import url(../Variables.css);
+
+.btn {
+  background-color: var(--btn-color-primary) !important;
+  color: var(--text-color-primary) !important;
+}
+
+.btn:hover {
+  background-color: var(--btn-color-hover) !important;
+  box-shadow: 1px 1px var(--btn-color-hover);
+}
+
+.btn-nav {
+  color: var(--btn-color-primary) !important;
+}

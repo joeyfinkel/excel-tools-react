@@ -1,0 +1,21 @@
+:root {
+  /* Navbar */
+  --navbar-width: 15%;
+
+  /* Buttons */
+  --btn-color-primary: #102a43;
+  --btn-color-hover: #0a2137;
+
+  /* Backgrounds */
+  --bg-color-primary: #1d2025 !important;
+  --bg-color-secondary: #486581;
+
+  /* Text */
+  --text-color-primary: #bcccdc;
+  --text-color-secondary: var(--btn-color-primary);
+
+  /* Container */
+  --container-width: 35vw;
+  --container-height: 20vh;
+  --container-radius: 15px;
+}

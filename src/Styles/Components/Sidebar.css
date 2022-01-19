@@ -1,0 +1,14 @@
+@import url(../Variables.css);
+
+.sidebar {
+  min-width: 10%;
+  width: var(--navbar-width) !important;
+  left: 0;
+  top: 0;
+  background-color: var(--bg-color-secondary);
+}
+
+.nav-text {
+  font-family: 'Nunito', sans-serif !important;
+  color: var(--text-color-secondary);
+}

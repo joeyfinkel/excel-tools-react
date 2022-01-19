@@ -1,0 +1,29 @@
+@use '../variables';
+
+.btn {
+  background-color: variables.$btn-color-primary;
+  color: variables.$text-color-primary;
+
+  &.create,
+  &.next {
+    bottom: 0;
+    right: 0;
+
+    &:hover {
+      background-color: variables.$btn-color-hover;
+    }
+  }
+
+  &.back {
+    top: 0;
+    left: 0;
+  }
+
+  &.nav {
+    color: $btn-color-primary;
+  }
+
+  &:hover {
+    background-color: variables.$btn-color-hover;
+  }
+}
