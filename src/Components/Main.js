@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { DataContainer, DataContainerNew } from './DataContainer';
 import { DragDrop } from './DragDrop';
 import { HeaderSelector } from './HeaderSelector';
 import { Heading } from './Heading';
@@ -17,20 +18,10 @@ export const Main = ({
 }) => {
   const [filesArr, setFilesArr] = useState([]);
   const [activeSheet, setActiveSheet] = useState('');
-  const [isShown, setIsShown] = useState(true);
-
-  const changeShown = () => {
-    setIsShown(false);
-  };
-
-  const sheetSelectorBtnOnClick = () => {
-    setIsShown(true);
-    document.getElementById('headers').classList.remove('d-none');
-    document.getElementById('sheets').classList.add('d-none');
-  };
+  const [type, setType] = useState('dragDrop');
 
   const sheetSelectorRadioOnClick = (e) => {
-    setActiveSheet(e.target.value);
+    setActiveSheet(e.target.name);
   };
 
   useEffect(() => {
@@ -44,23 +35,22 @@ export const Main = ({
         subHeading={subHeading}
         extraHeadings={extraHeadings}
       />
-      <div className='mx-auto' id='main' onChange={changeShown}>
-        <DragDrop addFiles={setFilesArr} isShown={isShown} />
-        {filesArr && (
-          <>
-            <SheetSelector
-              files={filesArr}
-              isShown={isShown}
-              btnOnClick={sheetSelectorBtnOnClick}
-              radioOnClick={sheetSelectorRadioOnClick}
-            />
-            <HeaderSelector
-              files={filesArr}
-              isShown={isShown}
-              activeSheet={activeSheet}
-            />
-          </>
-        )}
+      <div className='mx-auto' id='main'>
+        <DataContainerNew type={type}>
+          <DragDrop type={type} newType={setType} addFiles={setFilesArr} />
+          <SheetSelector
+            type={type}
+            newType={setType}
+            files={filesArr}
+            radioOnClick={sheetSelectorRadioOnClick}
+          />
+          <HeaderSelector
+            type={type}
+            newType={setType}
+            files={filesArr}
+            activeSheet={activeSheet}
+          />
+        </DataContainerNew>
       </div>
     </div>
   );

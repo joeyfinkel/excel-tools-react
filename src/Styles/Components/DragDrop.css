@@ -1,6 +1,6 @@
 @import url(../Variables.css);
 
-.drag-drop-container {
+.drag-drop__container {
   width: var(--container-width);
   height: var(--container-height);
   border-radius: var(--container-radius);

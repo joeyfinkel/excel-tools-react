@@ -29,11 +29,34 @@ export const DataContainer = ({ type, isShown, onClick, children }) => {
   );
 };
 
-export const DataContainerNew = ({ type, children }) => (
-  <div
-    className='position-relative overflow-auto pt-3 sheet-display mx-auto mt-4'
-    id={type}
-  >
-    {children}
-  </div>
-);
+export const DataContainerNew = ({ type, children }) => {
+  const [style, setStyle] = useState('');
+  const mainStyle = 'position-relative pt-3 mx-auto mt-4';
+
+  const styles = {
+    dragDrop: `drag-drop__container overflow-none ${mainStyle}`,
+    dataView: `data-view__container overflow-auto ${mainStyle}`,
+  };
+
+  useEffect(() => {
+    switch (type) {
+      case 'dragDrop':
+        setStyle(styles.dragDrop);
+        break;
+      case 'sheets':
+        setStyle(styles.dataView);
+        break;
+      case 'headers':
+        setStyle(styles.dataView);
+        break;
+      default:
+        setStyle(styles.dragDrop);
+    }
+  }, [type, styles.dragDrop, styles.dataView]);
+
+  return (
+    <div className={style} id='dataContainer'>
+      {children}
+    </div>
+  );
+};

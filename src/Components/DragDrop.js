@@ -4,13 +4,12 @@ import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import { getDataFromSheet } from '../Utils/File';
 import readXlsxFile from 'read-excel-file';
 import '../Styles/Components/DragDrop.css';
-import { DataContainerNew } from './DataContainer';
 
 /**
  * Creates the drag and drop component.
  * @returns The drag and drop component.
  */
-export const DragDrop = ({ addFiles, isShown }) => {
+export const DragDrop = ({ type, newType, addFiles }) => {
   const addToFiles = async (filesArr, filename, sheets, file) => {
     const sheetAttributes = await getDataFromSheet(sheets, file, 'attributes');
     const sheetData = await getDataFromSheet(sheets, file, 'data');
@@ -37,35 +36,32 @@ export const DragDrop = ({ addFiles, isShown }) => {
       await addToFiles(filesArr, filename, sheets, file);
     }
 
-    // Show the next component by removing the class 'd-none'
-    document.getElementById('sheets').classList.remove('d-none');
+    newType('sheets');
   };
 
   return (
-    <DataContainerNew>
-      <div
-        className={`${
-          isShown
-            ? 'drag-drop-container d-flex justify-content-center align-items-center mx-auto mt-5'
-            : 'd-none'
-        }`}
-        id='dragDrop'
-        onChange={showSheetInformation}
-      >
-        <form action='' className='mx-auto'>
-          <input type='file' name='' id='upload' hidden />
-          <label htmlFor='upload' className='text-center' role='button'>
-            <p>
-              <FontAwesomeIcon icon={faUpload} size='2x' />
-            </p>
-            <p>
-              Drag file here or click to{' '}
-              <span className='fw-bolder'>browse </span>
-              for one.
-            </p>
-          </label>
-        </form>
-      </div>
-    </DataContainerNew>
+    <div
+      className={`${
+        type === 'dragDrop'
+          ? 'd-flex justify-content-center align-items-center mx-auto mt-5'
+          : 'd-none'
+      }`}
+      id='dragDrop'
+      onChange={showSheetInformation}
+    >
+      <form action='' className='mx-auto'>
+        <input type='file' name='' id='upload' hidden />
+        <label htmlFor='upload' className='text-center' role='button'>
+          <p>
+            <FontAwesomeIcon icon={faUpload} size='2x' />
+          </p>
+          <p>
+            Drag file here or click to{' '}
+            <span className='fw-bolder'>browse </span>
+            for one.
+          </p>
+        </label>
+      </form>
+    </div>
   );
 };

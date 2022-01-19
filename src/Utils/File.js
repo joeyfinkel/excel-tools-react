@@ -28,17 +28,12 @@ export const getDataFromSheet = (sheets, file, returnData) => {
       columns: setColumns(data),
       rows: data.length,
     };
-
   });
-  const sheetData = sheetNames.map(async (sheet) => {
-    const data = await readXlsxFile(file, {
+  const sheetData = sheetNames.map(async (sheet) =>
+    readXlsxFile(file, {
       sheet,
-    });
-
-    return readXlsxFile(file, {
-      sheet,
-    });
-  });
+    })
+  );
 
   return returnData === 'attributes'
     ? Promise.all(sheetAttributes)
