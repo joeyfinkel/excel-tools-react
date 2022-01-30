@@ -1,9 +1,10 @@
 import React from 'react';
+import { ListGroup } from 'react-bootstrap';
+
 import { Heading } from './Heading';
 import { DataList } from './DataList';
-import { ListGroup } from 'react-bootstrap';
-import '../../Styles/Components/SheetDisplay.css';
 import { AbstractSelector } from '../AbstractSelector';
+import '../../Styles/Components/SheetDisplay.css';
 
 /**
  *

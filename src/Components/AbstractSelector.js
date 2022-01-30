@@ -20,7 +20,7 @@ export const AbstractSelector = ({ type, title, children, onClick }) => (
     {type === 'sheets' ? (
       <ForwardButton onClick={onClick} />
     ) : (
-      <CreateSheetButton />
+      <CreateSheetButton onClick={onClick} />
     )}
   </div>
 );
