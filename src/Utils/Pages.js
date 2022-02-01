@@ -7,6 +7,7 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
+/** Object containing every page's static data */
 export const pages = [
   {
     path: 'home',
