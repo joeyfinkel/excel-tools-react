@@ -9,7 +9,13 @@ import '../Styles/Components/DragDrop.css';
  * Creates the drag and drop component.
  * @returns The drag and drop component.
  */
-export const DragDrop = ({ type, newType, addFiles }) => {
+export const DragDrop = ({ templateType, type, newType, addFiles }) => {
+  const templateTypes = ['sheet-merger', 'image-template'];
+  const multiple =
+    templateType === 'sheet-merger' || templateType === 'image-template'
+      ? true
+      : false;
+
   const addToFiles = async (filesArr, filename, sheets, file) => {
     const sheetAttributes = await getDataFromSheet(sheets, file, 'attributes');
     const sheetData = await getDataFromSheet(sheets, file, 'data');
@@ -50,17 +56,19 @@ export const DragDrop = ({ type, newType, addFiles }) => {
       onChange={showSheetInformation}
     >
       <form action='' className='mx-auto'>
-        <input type='file' name='' id='upload' hidden />
-        <label htmlFor='upload' className='text-center' role='button'>
-          <p>
-            <FontAwesomeIcon icon={faUpload} size='2x' />
-          </p>
-          <p>
-            Drag file here or click to{' '}
-            <span className='fw-bolder'>browse </span>
-            for one.
-          </p>
-        </label>
+        <input type='file' name='' id='upload' hidden multiple={multiple} />
+        <div className='mx-auto'>
+          <label htmlFor='upload' className=' text-center' role='button'>
+            <p>
+              <FontAwesomeIcon icon={faUpload} size='2x' />
+            </p>
+            <p>
+              Drag file here or click to{' '}
+              <span className='fw-bolder'>browse </span>
+              for one.
+            </p>
+          </label>
+        </div>
       </form>
     </div>
   );

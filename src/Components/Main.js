@@ -31,7 +31,12 @@ export const Main = ({ templateType }) => {
         <Cards templateType={templateType} />
       ) : (
         <DataContainer componentType={type}>
-          <DragDrop type={type} newType={setType} addFiles={setFilesArr} />
+          <DragDrop
+            templateType={templateType}
+            type={type}
+            newType={setType}
+            addFiles={setFilesArr}
+          />
           <SheetSelector
             type={type}
             newType={setType}
