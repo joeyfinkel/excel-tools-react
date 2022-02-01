@@ -1,1 +1,10 @@
-export const Tutorials = () => <h1>Tutorials</h1>;
+import { Main } from '../Components/Main';
+
+export const Tutorials = () => (
+  <Main
+    mainHeading='Tutorials'
+    subHeading='Not sure how something works?'
+    templateType='tutorials'
+    extraHeadings='Check out all tutorials here'
+  />
+);

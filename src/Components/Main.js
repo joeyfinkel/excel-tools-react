@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { DataContainer, DataContainerNew } from './DataContainer';
+import { Cards } from './Cards';
+import { DataContainer } from './DataContainer';
 import { DragDrop } from './DragDrop';
 import { HeaderSelector } from './HeaderSelector';
 import { Heading } from './Heading';
@@ -7,15 +8,10 @@ import { SheetSelector } from './SheetSelector/SheetSelector';
 
 /**
  * Creates an abstract main section for every page that it's used for.
- * @param {{mainHeading: string, subHeading: string, templateType: string extraHeadings?: string}} headings The headings that are shown.
+ * @param {{templateType: string}} headings The headings that are shown.
  * @returns An abstract component that could be used with any page.
  */
-export const Main = ({
-  mainHeading,
-  subHeading,
-  templateType,
-  extraHeadings = '',
-}) => {
+export const Main = ({ templateType }) => {
   const [filesArr, setFilesArr] = useState([]);
   const [activeSheet, setActiveSheet] = useState('');
   const [type, setType] = useState('dragDrop');
@@ -29,14 +25,12 @@ export const Main = ({
   }, []);
 
   return (
-    <div className='main-section mx-auto'>
-      <Heading
-        mainHeading={mainHeading}
-        subHeading={subHeading}
-        extraHeadings={extraHeadings}
-      />
-      <div className='mx-auto' id='main'>
-        <DataContainerNew type={type}>
+    <div className='d-flex flex-column justify-content-center align-items-center overflow-hidden wrapper'>
+      <Heading templateType={templateType} />
+      {templateType === 'home' || templateType === 'tutorials' ? (
+        <Cards templateType={templateType} />
+      ) : (
+        <DataContainer componentType={type}>
           <DragDrop type={type} newType={setType} addFiles={setFilesArr} />
           <SheetSelector
             type={type}
@@ -50,8 +44,8 @@ export const Main = ({
             files={filesArr}
             activeSheet={activeSheet}
           />
-        </DataContainerNew>
-      </div>
+        </DataContainer>
+      )}
     </div>
   );
 };

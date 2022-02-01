@@ -10,26 +10,26 @@ import { ForwardButton } from './Buttons/ForwardButton';
  * @param {{type: 'sheets' | 'headers', children: JSX.Element}} props The props for the component.
  * @returns The wrapping `<div></div>` that can be used for `<SheetSelector />` and `<HeaderSelector />`.
  */
-export const DataContainer = ({ type, isShown, onClick, children }) => {
-  useEffect(() => {
-    const setIsShown = (state) => !state;
+// export const DataContainer = ({ type, isShown, onClick, children }) => {
+//   useEffect(() => {
+//     const setIsShown = (state) => !state;
 
-    setIsShown(isShown);
-  }, [isShown]);
+//     setIsShown(isShown);
+//   }, [isShown]);
 
-  return (
-    <div
-      className='position-relative overflow-auto pt-3 sheet-display mx-auto mt-4'
-      id={type}
-      onClick={onClick}
-    >
-      <BackButton />
-      {children}
-    </div>
-  );
-};
+//   return (
+//     <div
+//       className='position-relative overflow-auto pt-3 sheet-display mx-auto mt-4'
+//       id={type}
+//       onClick={onClick}
+//     >
+//       <BackButton />
+//       {children}
+//     </div>
+//   );
+// };
 
-export const DataContainerNew = ({ type, children }) => {
+export const DataContainer = ({ componentType, children }) => {
   const [style, setStyle] = useState('');
   const mainStyle = 'position-relative pt-3 mx-auto mt-4';
 
@@ -39,7 +39,7 @@ export const DataContainerNew = ({ type, children }) => {
   };
 
   useEffect(() => {
-    switch (type) {
+    switch (componentType) {
       case 'dragDrop':
         setStyle(styles.dragDrop);
         break;
@@ -52,7 +52,7 @@ export const DataContainerNew = ({ type, children }) => {
       default:
         setStyle(styles.dragDrop);
     }
-  }, [type, styles.dragDrop, styles.dataView]);
+  }, [componentType, styles.dragDrop, styles.dataView]);
 
   return (
     <div className={style} id='dataContainer'>

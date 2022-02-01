@@ -1,1 +1,3 @@
-export const SheetMerger = () => <h1>Sheet Merger</h1>;
+import { Main } from '../Components/Main';
+
+export const SheetMerger = () => <Main templateType='sheet-merger' />;

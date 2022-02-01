@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import { App } from './App';
 import { ColumnRemover } from './Pages/ColumnRemover';
+import { Home } from './Pages/Home';
 import { ImageTemplate } from './Pages/ImageTemplate';
 import { ItemTemplate } from './Pages/ItemTemplate';
 import { MissingDataTemplate } from './Pages/MissingDataTemplate';
@@ -15,6 +17,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />}>
+          <Route index element={<Home />} />
           <Route path='column-remover' element={<ColumnRemover />} />
           <Route path='sheet-merger' element={<SheetMerger />} />
           <Route path='item-template' element={<ItemTemplate />} />

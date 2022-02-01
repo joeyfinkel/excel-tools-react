@@ -1,0 +1,24 @@
+@import url(../Variables.css);
+
+.row {
+  margin-left: calc(var(--navbar-width) + 3) !important;
+}
+
+.card {
+  background-color: var(--bg-color-secondary);
+  color: var(--text-color-secondary);
+  width: 12rem;
+  height: 15rem;
+}
+
+.card:hover {
+  animation: zoom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes zoom {
+  100% {
+    transform: translateZ(0);
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}

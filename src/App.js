@@ -1,7 +1,7 @@
 import { Sidebar } from './Components/Sidebar';
 
 export const App = () => (
-  <div className='App'>
+  <div>
     <Sidebar />
   </div>
 );

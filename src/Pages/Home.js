@@ -1,1 +1,3 @@
-export const Home = () => <h1>Home</h1>;
+import { Main } from '../Components/Main';
+
+export const Home = () => <Main templateType='home' />;
