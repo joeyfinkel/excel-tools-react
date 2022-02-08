@@ -50,6 +50,7 @@ export const Overlay = ({ sheetName, headers, filename, btnText, onClick }) => {
         ref={target}
         onClick={() => setShow(!show)}
         variant='outline-none'
+        className='btn-sheet'
       >
         {btnText}
       </Button>

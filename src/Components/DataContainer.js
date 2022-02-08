@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 export const DataContainer = ({ componentType, children }) => {
   const [style, setStyle] = useState('');
-  const mainStyle = 'position-relative pt-3 mx-auto mt-4';
+  const mainStyle = 'position-relative px-4 mx-auto mt-4';
 
   const styles = {
     dragDrop: `drag-drop__container overflow-hidden ${mainStyle}`,
