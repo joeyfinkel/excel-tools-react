@@ -1,0 +1,12 @@
+@import url(../Variables.css);
+
+.popover,
+.popover-header,
+.popover-body {
+  background-color: var(--btn-color-primary);
+  color: var(--text-color-primary);
+}
+
+.bs-popover-end > .popover-arrow::after {
+  border-right-color: var(--btn-color-primary);
+}

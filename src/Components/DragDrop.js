@@ -10,7 +10,6 @@ import '../Styles/Components/DragDrop.css';
  * @returns The drag and drop component.
  */
 export const DragDrop = ({ templateType, type, newType, addFiles }) => {
-  const templateTypes = ['sheet-merger', 'image-template'];
   const multiple =
     templateType === 'sheet-merger' || templateType === 'image-template'
       ? true

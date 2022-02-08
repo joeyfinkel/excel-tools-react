@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FormCheck } from 'react-bootstrap';
 import { AbstractSelector } from './AbstractSelector';
 import writeXlsxFile from 'write-excel-file';
+import { Title } from './Title';
 
 /**
  *
@@ -104,14 +105,21 @@ export const HeaderSelector = ({ type, newType, files, activeSheet }) => {
             const headers = sheetData[activeSheetIdx][0];
 
             return (
-              <section key={fileIdx} className='w-auto ms-5 mt-4'>
+              <section
+                key={fileIdx}
+                className='headers-section col w-auto ms-5 mt-4'
+              >
+                <Title
+                  title={files.length > 1 && `${filename}: `}
+                  headingSize={4}
+                />
                 {headers.map((header, headerIdx) => (
                   <FormCheck
                     type='checkbox'
                     key={headerIdx}
                     id={`${filename}_${header}_${headerIdx}`}
                     name={header}
-                    className='ms3'
+                    className='ms-3'
                     label={header}
                     onClick={headerOnClick}
                   />

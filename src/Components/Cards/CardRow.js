@@ -1,11 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
-import { pages } from '../Utils/Pages';
-import { CardElement } from './CardCol';
 
-export const Cards = ({ templateType }) => (
-  // <Container>
+import { pages } from '../../Utils/Pages';
+import { CardLink } from './CardLink';
+
+const propTypes = {
+  /** The type of template the component will be used for. */
+  templateType: PropTypes.oneOf(['home', 'tutorials']),
+};
+
+export const CardRow = ({ templateType }) => (
   <Row xl={6} className='mt-5 ms-5'>
     {pages.map(
       ({ path, title, cardProps }, idx) =>
@@ -15,21 +22,22 @@ export const Cards = ({ templateType }) => (
           if (templateType === 'tutorials')
             return (
               title !== 'Tutorials' && (
-                <CardElement
+                <CardLink
                   key={idx}
                   path={path}
                   title={title}
-                  text={tutorialText}
+                  cardText={tutorialText}
                 />
               )
             );
 
           return (
-            <CardElement key={idx} path={path} title={title} text={homeText} />
+            <CardLink key={idx} path={path} title={title} cardText={homeText} />
           );
         })
     )}
     <Outlet />
   </Row>
-  // </Container>
 );
+
+CardRow.propTypes = propTypes;

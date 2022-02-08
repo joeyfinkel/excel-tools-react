@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Cards } from './Cards';
+import { CardRow } from './Cards/CardRow';
 import { DataContainer } from './DataContainer';
 import { DragDrop } from './DragDrop';
 import { HeaderSelector } from './HeaderSelector';
@@ -28,7 +28,7 @@ export const Main = ({ templateType }) => {
     <div className='d-flex flex-column justify-content-center align-items-center overflow-hidden wrapper'>
       <Heading templateType={templateType} />
       {templateType === 'home' || templateType === 'tutorials' ? (
-        <Cards templateType={templateType} />
+        <CardRow templateType={templateType} />
       ) : (
         <DataContainer componentType={type}>
           <DragDrop
@@ -38,8 +38,6 @@ export const Main = ({ templateType }) => {
             addFiles={setFilesArr}
           />
           <SheetSelector
-            type={type}
-            newType={setType}
             files={filesArr}
             radioOnClick={sheetSelectorRadioOnClick}
           />

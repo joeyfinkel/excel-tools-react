@@ -1,77 +1,72 @@
-import React from 'react';
-import { ListGroup } from 'react-bootstrap';
+import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
+import { Col, Stack } from 'react-bootstrap';
 
-import { Heading } from './Heading';
-import { DataList } from './DataList';
-import { AbstractSelector } from '../AbstractSelector';
+import { Overlay } from '../Overlay';
+import { BackButton } from '../Buttons/BackButton';
+import { Title } from '../Title';
 import '../../Styles/Components/SheetDisplay.css';
 
-/**
- *
- * @param {{files: [{filename: string, sheetAttributes: [{name: string, columns: number, rows: number}], sheetData: [{data: any[]}]}]}} props The props that are used for this component.
- * @returns
- */
-export const SheetSelector = ({
-  type,
-  newType,
-  templateType,
-  files,
-  radioOnClick,
-}) => {
-  const changeType = () => newType('headers');
-
-  const populate = () => {
-    switch (templateType) {
-      case 'column-remover':
-        return files.map(({ sheetAttributes, filename }, idx) => (
-          <div key={idx}>
-            <Heading headings={['Sheet name', 'Columns', 'Rows']} />
-            <section>
-              {sheetAttributes.map((attributes, attrIdx) => (
-                <ListGroup
-                  as='ul'
-                  horizontal
-                  key={attrIdx}
-                  className='mt-2 underline'
-                >
-                  <DataList
-                    attributes={attributes}
-                    filename={filename}
-                    onClick={radioOnClick}
-                  />
-                </ListGroup>
-              ))}
-            </section>
-          </div>
-        ));
-    }
-  };
-
-  return (
-    type === 'sheets' && (
-      <AbstractSelector type={type} title='Select a sheet' onClick={changeType}>
-        {files.map(({ sheetAttributes, filename }, idx) => (
-          <div key={idx}>
-            <Heading headings={['Sheet name', 'Columns', 'Rows']} />
-            <section>
-              {sheetAttributes.map((attributes, attrIdx) => (
-                <ListGroup
-                  as='ul'
-                  horizontal
-                  key={attrIdx}
-                  className='mt-2 underline'
-                >
-                  <DataList
-                    attributes={attributes}
-                    filename={filename}
-                    onClick={radioOnClick}
-                  />
-                </ListGroup>
-              ))}
-            </section>
-          </div>
-        ))}
-      </AbstractSelector>
-    )
-  );
+const propTypes = {
+  /** Information from the uploaded files */
+  files: PropTypes.arrayOf(
+    PropTypes.shape({
+      filename: PropTypes.string,
+      sheetAttributes: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string,
+          columns: PropTypes.number,
+          rows: PropTypes.number,
+        })
+      ),
+      sheetData: PropTypes.arrayOf(PropTypes.array),
+    })
+  ).isRequired,
+  radioOnClick: PropTypes.func.isRequired,
 };
+
+export const SheetSelector = ({ files, radioOnClick }) => (
+  <div>
+    <BackButton />
+    <Title
+      title='Select a sheet and columns for the new sheet'
+      headingSize={2}
+    />
+    <Stack gap={4} className='col-md-5 mt-4 ms-5'>
+      {files.map(({ sheetAttributes, filename, sheetData }, idx) =>
+        sheetAttributes.map(({ name, columns, rows }, sheetIdx) => {
+          const headers = sheetData[sheetIdx][0];
+          const btnText = (
+            <>
+              {name} <br />
+              <small>
+                Column: {columns} {String.fromCharCode(183)} Rows: {rows}
+              </small>
+            </>
+          );
+
+          return files.length === 1 ? (
+            <Overlay
+              key={sheetIdx}
+              filename={filename}
+              headers={headers}
+              sheetName={name}
+              btnText={btnText}
+              onClick={radioOnClick}
+            />
+          ) : (
+            <Col id={files.length} key={idx}>
+              {/* <Card
+                      cardClass='w-auto'
+                      title={filename}
+                      bodyText={<Overlay sheetAttributes={sheetAttributes} />}
+                    /> */}
+            </Col>
+          );
+        })
+      )}
+    </Stack>
+  </div>
+);
+
+SheetSelector.propTypes = propTypes;

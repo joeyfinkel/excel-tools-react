@@ -2,9 +2,9 @@
 
 .sheet-display,
 .data-view__container {
-  width: var(--container-width);
+  min-width: var(--container-width);
   height: calc(var(--container-height) * 2.8);
-  background-color: var(--bg-color-secondary);
+  background-color: var(--btn-color-primary);
   border-radius: var(--container-radius);
 }
 

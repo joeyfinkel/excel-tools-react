@@ -1,4 +1,5 @@
 import React from 'react';
+import { CardGroup, Row } from 'react-bootstrap';
 import { BackButton } from './Buttons/BackButton';
 import { CreateSheetButton } from './Buttons/CreateSheetButton';
 import { ForwardButton } from './Buttons/ForwardButton';
@@ -15,7 +16,7 @@ export const AbstractSelector = ({ type, title, children, onClick }) => (
     id={type}
   >
     <BackButton />
-    <Title title={title} />
+    <Title title={title} headingSize={2} />
     {children}
     {type === 'sheets' ? (
       <ForwardButton onClick={onClick} />

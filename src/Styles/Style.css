@@ -3,7 +3,7 @@
 
 /* Global styles */
 body {
-  background-color: var(--bg-color-primary) !important;
+  background-color: var(--bg-color-secondary) !important;
   color: var(--text-color-primary) !important;
   margin: 0;
   padding: 0;

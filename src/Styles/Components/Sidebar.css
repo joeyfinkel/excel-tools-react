@@ -5,9 +5,10 @@
   width: var(--navbar-width) !important;
   left: 0;
   top: 0;
-  background-color: var(--bg-color-secondary);
+  background-color: var(--btn-color-primary);
+  filter: drop-shadow(10px 30px 40px #113252);
 }
 
 .nav-text {
-  color: var(--text-color-secondary);
+  color: var(--text-color-primary);
 }

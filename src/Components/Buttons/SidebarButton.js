@@ -1,6 +1,7 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { pages } from '../../Utils/Pages';
 
 /**
@@ -11,16 +12,11 @@ export const SidebarButton = () =>
   pages.map(
     ({ path, icon, title }, idx) =>
       path !== 'home' && (
-        <div
-          key={idx}
-          className='d-flex flex-row justify-content-start bg-transparent border-bottom-0'
-        >
-          <Link to={`/${path}`}>
-            <p className='nav-text ms-1 mt-4 text-nowrap'>
-              <FontAwesomeIcon icon={icon} />
-              <span className='fw-bold ms-3'>{title}</span>
-            </p>
-          </Link>
-        </div>
+        <Link to={`/${path}`} className='btn-nav'>
+          <p className='nav-text ms-1 mt-4 text-nowrap'>
+            <FontAwesomeIcon icon={icon} />
+            <span className='fw-bold ms-3'>{title}</span>
+          </p>
+        </Link>
       )
   );
