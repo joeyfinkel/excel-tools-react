@@ -25,7 +25,7 @@ export const Main = ({ templateType }) => {
   }, []);
 
   return (
-    <div className='d-flex flex-column justify-content-center align-items-center overflow-hidden wrapper'>
+    <div className='d-flex flex-column overflow-hidden wrapper vh-100'>
       <Heading templateType={templateType} />
       {templateType === 'home' || templateType === 'tutorials' ? (
         <CardRow templateType={templateType} />

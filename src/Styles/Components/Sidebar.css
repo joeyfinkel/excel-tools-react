@@ -6,7 +6,8 @@
   left: 0;
   top: 0;
   background-color: var(--btn-color-primary);
-  filter: drop-shadow(10px 30px 40px #113252);
+  -webkit-box-shadow: 18px 9px 16px 8px rgba(17, 50, 82, 0.71);
+  box-shadow: 18px 9px 16px 8px rgba(17, 50, 82, 0.71);
 }
 
 .nav-text {
