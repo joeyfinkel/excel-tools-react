@@ -41,16 +41,12 @@ export const DragDrop = ({ templateType, type, newType, addFiles }) => {
       await addToFiles(filesArr, filename, sheets, file);
     }
 
-    newType('sheets');
+    newType('container');
   };
 
   return (
     <div
-      className={`${
-        type === 'dragDrop'
-          ? 'd-flex justify-content-center align-items-center mx-auto mt-5'
-          : 'd-none'
-      }`}
+      className={`${type !== 'dragDrop' ? 'd-none' : undefined}`}
       id='dragDrop'
       onChange={showSheetInformation}
     >

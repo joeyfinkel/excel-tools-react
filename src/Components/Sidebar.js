@@ -3,7 +3,9 @@ import { Link, Outlet } from 'react-router-dom';
 import { Nav, Image, Stack } from 'react-bootstrap';
 
 import { SidebarButton } from './Buttons/SidebarButton';
+
 import logo from '../Images/navigation/Logo.svg';
+
 import '../Styles/Components/Button.css';
 import '../Styles/Components/Sidebar.css';
 
@@ -15,9 +17,8 @@ export const Sidebar = () => (
   <div className='w-100 h-100'>
     <div className='position-relative'>
       <Nav
-        className='sidebar flex-column position-fixed mw-100 vh-100 overflow-hidden float-start zindex-fixed row'
+        className='sidebar flex-column position-fixed vh-100 overflow-hidden float-start zindex-fixed row'
         variant='pills'
-        // fill
       >
         <div className='col mw-100 ms-2'>
           <section className='row mx-auto'>
@@ -34,10 +35,3 @@ export const Sidebar = () => (
     <Outlet />
   </div>
 );
-
-// const newSidebar = () => (
-//   <Nav vertical>
-//     <SidebarButton />
-//     <Outlet />
-//   </Nav>
-// );

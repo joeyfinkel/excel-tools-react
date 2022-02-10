@@ -3,10 +3,17 @@
 .popover,
 .popover-header,
 .popover-body {
-  background-color: var(--btn-color-primary);
-  color: var(--text-color-primary);
+  background-color: var(--clr-bg-popover);
+  color: var(--clr-txt-primary);
+  border: none !important;
+  border-radius: var(--border-radius-primary);
+}
+
+.popover:focus,
+.popover > *:focus {
+  outline: none !important;
 }
 
 .bs-popover-end > .popover-arrow::after {
-  border-right-color: var(--btn-color-primary);
+  border-right-color: var(--clr-bg-popover);
 }

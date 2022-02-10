@@ -12,9 +12,9 @@ export const SidebarButton = () =>
   pages.map(
     ({ path, icon, title }, idx) =>
       path !== 'home' && (
-        <Link to={`/${path}`} className='btn-nav'>
-          <p className='nav-text ms-1 mt-4 text-nowrap'>
-            <FontAwesomeIcon icon={icon} />
+        <Link to={`/${path}`} key={idx} className='btn-nav'>
+          <p className='nav-text ms-1 mt-3 text-nowrap'>
+            <FontAwesomeIcon icon={icon} size={'lg'} />
             <span className='fw-bold ms-3'>{title}</span>
           </p>
         </Link>

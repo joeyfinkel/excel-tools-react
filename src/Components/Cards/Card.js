@@ -8,19 +8,18 @@ const propTypes = {
   cardClass: PropTypes.string,
   title: PropTypes.string,
   subTitle: PropTypes.string,
-  bodyText: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
+  role: PropTypes.bool,
+  bodyText: PropTypes.any,
   onClick: PropTypes.func,
 };
 
-export const Card = forwardRef((props, ref) => {
-  const { cardClass, id, title, subTitle, bodyText, onClick } = props;
-
-  return (
+export const Card = forwardRef(
+  ({ cardClass, id, title, subTitle, role, bodyText, onClick }, ref) => (
     <BootstrapCard
       ref={ref}
       className={cardClass}
       id={id}
-      role='button'
+      role={role && 'button'}
       onClick={onClick}
     >
       <BootstrapCard.Body>
@@ -28,10 +27,10 @@ export const Card = forwardRef((props, ref) => {
         {subTitle && (
           <BootstrapCard.Subtitle>{subTitle}</BootstrapCard.Subtitle>
         )}
-        <BootstrapCard.Text>{bodyText}</BootstrapCard.Text>
+        <BootstrapCard.Text as='div'>{bodyText}</BootstrapCard.Text>
       </BootstrapCard.Body>
     </BootstrapCard>
-  );
-});
+  )
+);
 
 Card.propTypes = propTypes;

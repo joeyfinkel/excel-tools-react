@@ -1,12 +1,11 @@
 @import url(../Variables.css);
 
 .drag-drop__container {
-  width: var(--container-width);
-  height: var(--container-height);
-  border-radius: var(--container-radius);
-  background-color: var(--bg-color-secondary);
-  -webkit-box-shadow: 18px 9px 16px 8px rgba(54, 72, 89, 0.71);
-  box-shadow: 18px 9px 16px 8px rgba(54, 72, 89, 0.71);
+  width: var(--component-width);
+  height: var(--component-height);
+  border-radius: var(--border-radius-primary);
+  background-color: var(--clr-bg-component);
+  box-shadow: var(--box-shadow-component);
 }
 
 .warning {

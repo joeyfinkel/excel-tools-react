@@ -13,7 +13,7 @@ const propTypes = {
 };
 
 export const CardRow = ({ templateType }) => (
-  <Row xl={6} className='mt-5 ms-5'>
+  <Row xl={'auto'} className='mx-auto mt-5'>
     {pages.map(
       ({ path, title, cardProps }, idx) =>
         path !== 'home' &&

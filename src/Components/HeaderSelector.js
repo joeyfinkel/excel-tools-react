@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { FormCheck } from 'react-bootstrap';
-import { AbstractSelector } from './AbstractSelector';
+
 import writeXlsxFile from 'write-excel-file';
+
+import { AbstractSelector } from './AbstractSelector';
 import { Title } from './Title';
 
 /**

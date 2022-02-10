@@ -5,7 +5,7 @@ export const DataContainer = ({ componentType, children }) => {
   const mainStyle = 'position-relative px-4 mx-auto mt-4';
 
   const styles = {
-    dragDrop: `drag-drop__container overflow-hidden ${mainStyle}`,
+    dragDrop: `drag-drop__container d-flex justify-content-center align-items-center mx-auto overflow-hidden`,
     dataView: `data-view__container ${mainStyle}`,
   };
 
@@ -14,10 +14,7 @@ export const DataContainer = ({ componentType, children }) => {
       case 'dragDrop':
         setStyle(styles.dragDrop);
         break;
-      case 'sheets':
-        setStyle(styles.dataView);
-        break;
-      case 'headers':
+      case 'container':
         setStyle(styles.dataView);
         break;
       default:

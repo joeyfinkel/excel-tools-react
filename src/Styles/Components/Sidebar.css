@@ -1,15 +1,11 @@
 @import url(../Variables.css);
 
 .sidebar {
-  min-width: 10%;
-  width: var(--navbar-width) !important;
-  left: 0;
-  top: 0;
-  background-color: var(--btn-color-primary);
-  -webkit-box-shadow: 18px 9px 16px 8px rgba(17, 50, 82, 0.71);
-  box-shadow: 18px 9px 16px 8px rgba(17, 50, 82, 0.71);
+  background-color: var(--clr-bg-sidebar);
+  box-shadow: var(--box-shadow-component);
+  width: var(--navbar-width);
 }
 
 .nav-text {
-  color: var(--text-color-primary);
+  color: var(--clr-txt-primary);
 }

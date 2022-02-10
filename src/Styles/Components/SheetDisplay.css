@@ -2,20 +2,11 @@
 
 .sheet-display,
 .data-view__container {
-  min-width: var(--container-width);
-  height: calc(var(--container-height) * 2.8);
-  background-color: var(--bg-color-secondary);
-  border-radius: var(--container-radius);
-  -webkit-box-shadow: 18px 9px 16px 8px rgba(54, 72, 89, 0.71);
-  box-shadow: 18px 9px 16px 8px rgba(54, 72, 89, 0.71);
-}
-
-.underline {
-  border-bottom: 0.2px solid;
-}
-
-.text {
-  color: var(--text-color-primary) !important;
+  min-width: var(--component-width);
+  height: calc(var(--component-height) * 2.8);
+  background-color: var(--clr-bg-component);
+  border-radius: var(--border-radius-primary);
+  box-shadow: var(--box-shadow-component);
 }
 
 .headers-section {

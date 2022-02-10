@@ -3,20 +3,16 @@
 
 /* Global styles */
 body {
-  background-color: #455f78 !important;
-  color: var(--text-color-primary) !important;
+  background-color: var(--clr-bg-primary);
+  color: var(--clr-txt-primary);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Nunito', sans-serif !important;
+  font-family: var(--font-family);
 }
 
 a {
   text-decoration: none;
-}
-
-.content {
-  width: calc(100vh - var(--navbar-width));
 }
 
 .wrapper {
@@ -34,22 +30,12 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--text-color-primary);
+  background-color: var(--clr-txt-primary);
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #a8bbbf;
-}
-
-/* Summary styles */
-.summary-title {
-  border-bottom: 2px solid var(--bg-color-secondary);
-}
-
-.summary-text {
-  line-height: 1.6 !important;
-  text-align: justify;
+  background-color: var(--clr-txt-primary);
 }

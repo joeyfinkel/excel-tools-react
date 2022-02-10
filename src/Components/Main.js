@@ -4,7 +4,7 @@ import { DataContainer } from './DataContainer';
 import { DragDrop } from './DragDrop';
 import { HeaderSelector } from './HeaderSelector';
 import { Heading } from './Heading';
-import { SheetSelector } from './SheetSelector/SheetSelector';
+import { SheetSelector } from './SheetSelector';
 
 /**
  * Creates an abstract main section for every page that it's used for.
@@ -38,6 +38,7 @@ export const Main = ({ templateType }) => {
             addFiles={setFilesArr}
           />
           <SheetSelector
+            type={type}
             files={filesArr}
             radioOnClick={sheetSelectorRadioOnClick}
           />

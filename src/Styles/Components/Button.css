@@ -1,31 +1,46 @@
 @import url(../Variables.css);
 
-.btn {
-  background-color: var(--btn-color-primary) !important;
-  color: var(--text-color-primary) !important;
-}
-
+.btn,
 .btn:hover {
-  background-color: var(--btn-color-hover) !important;
-  box-shadow: 1px 1px var(--btn-color-hover);
+  color: var(--clr-txt-primary);
+  border-radius: var(--border-radius-primary);
 }
 
 .btn-nav {
-  border-radius: 30px;
+  border-radius: 12rem;
   display: block;
   text-decoration: none;
   position: relative;
   text-transform: uppercase;
   cursor: pointer;
   font-size: 0.7142em;
-  padding: 0px 5px;
-  line-height: 1.625rem;
+  line-height: 2rem;
+  padding: 0px 15px;
+  background-color: var(--clr-btn-sidebar);
 }
 
 .btn-nav:hover {
-  background-color: #4d6e8e;
+  background-color: var(--clr-btn-sidebar-hover);
 }
 
 .btn-sheet {
-  
+  background-color: var(--clr-btn-sheet);
+  box-shadow: var(--box-shadow-component);
+}
+
+.btn-sheet:focus,
+.btn-create:focus {
+  outline: none !important;
+  box-shadow: var(--box-shadow-component);
+}
+
+.btn-sheet:hover {
+  background-color: var(--clr-btn-sheet-hover);
+}
+
+.btn-create {
+  background-color: var(--clr-bg-sidebar);
+  /* position: absolute;
+  bottom: 0;
+  right: 0; */
 }

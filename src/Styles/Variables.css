@@ -1,22 +1,29 @@
 :root {
-  /* Navbar */
-  --navbar-width: 15%;
+  /* Backgrounds */
+  --clr-bg-primary: #9fb3c8 !important;
+  --clr-bg-sidebar: #243b53;
+  --clr-bg-component: #627d98;
+  --clr-bg-popover: #486581 !important;
 
   /* Buttons */
-  --btn-color-primary: #102a43;
-  --btn-color-hover: #0a2137;
-
-  /* Backgrounds */
-  --bg-color-primary: #1d2025 !important;
-  --bg-color-secondary: #486581;
-  --bg-color-secondary-real: #455f78;
+  --clr-btn-sidebar: var(--clr-bg-sidebar);
+  --clr-btn-sidebar-hover: rgba(240, 244, 248, 0.137) !important;
+  --clr-btn-sheet: #486581 !important;
+  --clr-btn-sheet-hover: #334e68 !important;
 
   /* Text */
-  --text-color-primary: #bcccdc;
-  --text-color-secondary: var(--btn-color-primary);
+  --clr-txt-primary: #f0f4f8 !important;
 
-  /* Container */
-  --container-width: 35vw;
-  --container-height: 20vh;
-  --container-radius: 15px;
+  /* Utilities */
+  --font-family: 'Nunito', sans-serif !important;
+  --box-shadow-component: 18px 9px 16px 8px rgba(54, 72, 89, 0.71);
+  --underline: 0.2px solid; /* border-bottom: var(--underline) */
+  --border-radius-primary: 1rem !important;
+
+  /* Dimensions */
+  --navbar-width: 260px;
+  --component-width: 40em;
+  --component-height: 12em;
+  --card-width: calc(var(--component-width) / 3);
+  --card-height: var(--card-width);
 }
