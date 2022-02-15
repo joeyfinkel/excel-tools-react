@@ -1,4 +1,4 @@
-import { pages } from '../Utils/Pages';
+import { data } from '../Utils/PagesData';
 
 /**
  * Creates the heading section.
@@ -8,7 +8,7 @@ import { pages } from '../Utils/Pages';
 export const Heading = ({ templateType }) => {
   const textStyle = 'text-center mt-4 mb-2';
 
-  return pages.map(
+  return data.map(
     ({ path, title, headings }, idx) =>
       path === templateType && (
         <div className='title pt-2' key={idx}>

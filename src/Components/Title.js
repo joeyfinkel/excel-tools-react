@@ -5,7 +5,7 @@
  * @returns The title component for the sheet selector.
  */
 export const Title = ({ title, headingSize }) => (
-  <p className={`text-center h${headingSize} `}>
+  <p className={`text-center h${headingSize}`}>
     <strong>{title}</strong>
   </p>
 );

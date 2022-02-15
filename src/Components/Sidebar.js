@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Nav, Image, Stack } from 'react-bootstrap';
 
-import { SidebarButton } from './Buttons/SidebarButton';
+import { SidebarButtons } from './Buttons/SidebarButtons';
 
-import logo from '../Images/navigation/Logo.svg';
+import logo2 from '../Images/navigation/EDS Logo 1.svg';
 
 import '../Styles/Components/Button.css';
 import '../Styles/Components/Sidebar.css';
@@ -13,7 +13,7 @@ import '../Styles/Components/Sidebar.css';
  * Creates the sidebar with routing.
  * @returns The applications sidebar with routing.
  */
-export const Sidebar = () => (
+export const Sidebar = ({ onClick }) => (
   <div className='w-100 h-100'>
     <div className='position-relative'>
       <Nav
@@ -21,13 +21,20 @@ export const Sidebar = () => (
         variant='pills'
       >
         <div className='col mw-100 ms-2'>
-          <section className='row mx-auto'>
-            <Link to='/'>
-              <Image fluid src={logo} />
+          <Stack className='d-flex flex-column mw-100 mt-2 ms-3'>
+            <Link
+              to='/'
+              className='btn-nav home'
+              onClick={() => {
+                document.title = 'EDS Tools';
+              }}
+            >
+              <p className='nav-text underline ms-1 mt-3 text-nowrap'>
+                <Image fluid src={logo2} className='logo' />
+                <span className='fw-bold ms-3'>EDS Tools</span>
+              </p>
             </Link>
-          </section>
-          <Stack className='d-flex flex-column mw-100 mt-5 ms-3'>
-            <SidebarButton />
+            <SidebarButtons onClick={onClick} />
           </Stack>
         </div>
       </Nav>

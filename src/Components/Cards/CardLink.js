@@ -9,9 +9,14 @@ import { Card } from './Card';
 export const CardLink = ({ path, title, cardText }) => (
   <Col>
     {path ? (
-      <Link to={`/${path}`}>
+      <Link
+        to={`/${path}`}
+        onClick={() => {
+          document.title = title;
+        }}
+      >
         <Card
-          cardClass='info-card'
+          className='info-card'
           title={title}
           bodyText={cardText}
           role={true}

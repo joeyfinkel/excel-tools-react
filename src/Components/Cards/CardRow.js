@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 
-import { pages } from '../../Utils/Pages';
+import { data } from '../../Utils/PagesData';
 import { CardLink } from './CardLink';
 
 const propTypes = {
@@ -14,7 +14,7 @@ const propTypes = {
 
 export const CardRow = ({ templateType }) => (
   <Row xl={'auto'} className='mx-auto mt-5'>
-    {pages.map(
+    {data.map(
       ({ path, title, cardProps }, idx) =>
         path !== 'home' &&
         cardProps.map(({ homeText, tutorialText }) => {

@@ -2,10 +2,11 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { Card as BootstrapCard } from 'react-bootstrap';
+
 import '../../Styles/Components/Card.css';
 
 const propTypes = {
-  cardClass: PropTypes.string,
+  className: PropTypes.string,
   title: PropTypes.string,
   subTitle: PropTypes.string,
   role: PropTypes.bool,
@@ -14,10 +15,10 @@ const propTypes = {
 };
 
 export const Card = forwardRef(
-  ({ cardClass, id, title, subTitle, role, bodyText, onClick }, ref) => (
+  ({ className, id, title, subTitle, role, bodyText, onClick }, ref) => (
     <BootstrapCard
       ref={ref}
-      className={cardClass}
+      className={className}
       id={id}
       role={role && 'button'}
       onClick={onClick}

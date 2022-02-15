@@ -14,3 +14,14 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+.sheets-data {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.test-flex {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+}

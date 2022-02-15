@@ -1,54 +1,58 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
-import { getDataFromSheet } from '../Utils/File';
-import readXlsxFile from 'read-excel-file';
-import '../Styles/Components/DragDrop.css';
 
-/**
- * Creates the drag and drop component.
- * @returns The drag and drop component.
- */
-export const DragDrop = ({ templateType, type, newType, addFiles }) => {
+import { readUploadedFile } from '../Utils/Data/readData';
+import { removeData } from '../Utils/Data/writeData';
+import { transformDataFromStorage } from '../Utils/CreateSheet/ItemTemplate';
+
+import '../Styles/Components/DragDrop.css';
+import { Data, getHeaders, } from '../Utils/Helpers';
+
+const propsTypes = {
+  templateType: PropTypes.oneOf([
+    'home',
+    'column-remover',
+    'sheet-merger',
+    'item-template',
+    'image-template',
+    'missing-data-template',
+    'tutorials',
+  ]),
+  type: PropTypes.oneOf(['dragDrop']).isRequired,
+  newType: PropTypes.func.isRequired,
+  addFiles: PropTypes.func.isRequired,
+};
+
+export const DragDrop = ({ templateType, type, newType, files, addFiles }) => {
   const multiple =
     templateType === 'sheet-merger' || templateType === 'image-template'
       ? true
       : false;
 
-  const addToFiles = async (filesArr, filename, sheets, file) => {
-    const sheetAttributes = await getDataFromSheet(sheets, file, 'attributes');
-    const sheetData = await getDataFromSheet(sheets, file, 'data');
-
-    filesArr.push({ filename, sheetAttributes, sheetData });
-    addFiles(filesArr);
-    localStorage.setItem('filesData', JSON.stringify(filesArr, null, 2));
+  const showSheetInformation = async (e) => {
+    readUploadedFile(e, addFiles);
+    newType('container');
   };
 
-  /**
-   * Reads the uploaded XLSX file and gets information on each sheet.
-   * @param {Event} e The XLSX file that was uploaded.
-   */
-  const showSheetInformation = async (e) => {
-    const filesObj = e.target.files;
-    const filesArr = [];
+  const createSheet = (e) => {
+    readUploadedFile(e, addFiles);
+    // console.log(JSON.parse(localStorage.getItem('filesData')));
+    // transformDataFromStorage(1);
 
-    for (const file of filesObj) {
-      const sheets = await readXlsxFile(file, {
-        getSheets: true,
-      });
-      const filename = file.name.replace('.xlsx', '');
-
-      await addToFiles(filesArr, filename, sheets, file);
-    }
-
-    newType('container');
+    // console.log(new Data(0).getHeaders());
+    console.log(Data.read.headers(0));
   };
 
   return (
     <div
       className={`${type !== 'dragDrop' ? 'd-none' : undefined}`}
       id='dragDrop'
-      onChange={showSheetInformation}
+      onChange={
+        templateType === 'item-template' ? createSheet : showSheetInformation
+      }
     >
       <form action='' className='mx-auto'>
         <input type='file' name='' id='upload' hidden multiple={multiple} />
@@ -68,3 +72,5 @@ export const DragDrop = ({ templateType, type, newType, addFiles }) => {
     </div>
   );
 };
+
+DragDrop.propTypes = propsTypes;

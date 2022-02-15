@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { App } from './App';
-import { ColumnRemover } from './Pages/ColumnRemover';
-import { Home } from './Pages/Home';
-import { ImageTemplate } from './Pages/ImageTemplate';
-import { ItemTemplate } from './Pages/ItemTemplate';
-import { MissingDataTemplate } from './Pages/MissingDataTemplate';
-import { SheetMerger } from './Pages/SheetMerger';
-import { Tutorials } from './Pages/Tutorials';
+import {
+  ColumnRemover,
+  Home,
+  ImageTemplate,
+  ItemTemplate,
+  MissingDataTemplate,
+  SheetMerger,
+  Tutorials,
+} from './Pages';
 import './Styles/Style.css';
 
 ReactDOM.render(

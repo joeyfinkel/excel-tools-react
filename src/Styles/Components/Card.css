@@ -8,7 +8,7 @@
 }
 
 .header-card {
-  background-color: var(--clr-bg-component);
+  background-color: var(--clr-btn-sheet);
   color: var(--clr-txt-primary);
   box-shadow: var(--box-shadow-component);
   overflow: scroll;

@@ -6,6 +6,15 @@
   width: var(--navbar-width);
 }
 
+.logo {
+  width: 3em;
+  height: 3em;
+}
+
 .nav-text {
   color: var(--clr-txt-primary);
+}
+
+.underline {
+  border-bottom: var(--underline);
 }

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, FormCheck, Fade } from 'react-bootstrap';
+import { FormCheck, Fade } from 'react-bootstrap';
 
 import { Card } from './Cards/Card';
 
@@ -8,33 +8,45 @@ import '../Styles/Components/Button.css';
 import '../Styles/Components/Overlay.css';
 
 const propTypes = {
-  headers: PropTypes.array.isRequired,
   filename: PropTypes.string.isRequired,
-  btnText: PropTypes.any.isRequired,
+  name: PropTypes.string.isRequired,
+  headers: PropTypes.array.isRequired,
+  setActiveSheet: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
-export const Headers = ({ headers, filename, btnText, onClick }) => {
+export const Headers = ({
+  headers,
+  filename,
+  setActiveSheet,
+  onClick,
+  name,
+  totalSheets,
+}) => {
   const [open, setOpen] = useState(false);
   const target = useRef(null);
 
   return (
-    <>
-      <Button
+    <div className='col'>
+      <div
         ref={target}
-        onClick={() => setOpen(!open)}
+        onClick={(e) => {
+          setOpen(!open);
+          setActiveSheet(e.target.id);
+        }}
         aria-controls='headers'
         aria-expanded={open}
         variant='outline-none'
-        className='btn-sheet'
+        id={name}
+        className='btn btn-sheet btn-outline-none px-5 py-2'
       >
-        {btnText}
-      </Button>
-      <Fade in={open}>
-        <div id='headers' className='mt-3'>
+        {name}
+      </div>
+      <Fade in={open} >
+        <div id='headers' className='my-3'>
           <Card
             ref={target}
-            cardClass='header-card border-0'
+            className='header-card border-0'
             title='Headers:'
             bodyText={headers.map((header, headerIdx) => (
               <FormCheck
@@ -50,7 +62,7 @@ export const Headers = ({ headers, filename, btnText, onClick }) => {
           />
         </div>
       </Fade>
-    </>
+    </div>
   );
 };
 
