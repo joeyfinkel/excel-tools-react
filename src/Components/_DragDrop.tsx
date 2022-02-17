@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import writeXlsxFile from 'write-excel-file';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
-import { readUploadedFile, transformData } from '../Utils/Helpers';
+// import { readUploadedFile } from '../Utils/Data/readData';
+import { removeData } from '../Utils/Data/writeData';
+import { transformDataFromStorage } from '../Utils/CreateSheet/ItemTemplate';
+import {
+  getSheetData,
+  getHeaders,
+  readUploadedFile,
+  removeColumns,
+} from '../Utils/Helpers';
 
 import '../Styles/Components/DragDrop.css';
 
@@ -24,20 +31,37 @@ const propsTypes = {
   addFiles: PropTypes.func.isRequired,
 };
 
-export const DragDrop = ({ templateType, type, newType, addFiles }) => {
+type Props = {
+  templateType:
+    | 'home'
+    | 'column-remover'
+    | 'sheet-merger'
+    | 'item-template'
+    | 'image-template'
+    | 'missing-data-template'
+    | 'tutorials';
+  type: 'dragDrop';
+  newType: (component: string) => void;
+  addFiles: (filesArr: any) => void;
+};
+
+export const DragDrop = ({ templateType, type, newType, addFiles }: Props) => {
   const multiple =
     templateType === 'sheet-merger' || templateType === 'image-template'
       ? true
       : false;
 
-  const showSheetInformation = async (e) => {
+  const showSheetInformation = async (e: Event) => {
     readUploadedFile(e, addFiles);
     newType('container');
   };
 
-  const createSheet = async (e) => {
+  const createSheet = (e: Event) => {
     readUploadedFile(e, addFiles);
-    await writeXlsxFile(transformData(0), { fileName: 'New Sheet.xlsx' });
+    // console.log(getHeaders(0));
+    // console.log(getSheetData(0));
+    // console.log(getSheetData(0)[0]);
+    console.log(removeColumns(0, 1));
   };
 
   return (
